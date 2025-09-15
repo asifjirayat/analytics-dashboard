@@ -1,7 +1,5 @@
 import React from "react";
 
-const ChartContainer = () => {
+export const ChartContainer = () => {
   return <div>ChartContainer</div>;
 };
-
-export default ChartContainer;

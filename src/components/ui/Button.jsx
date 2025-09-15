@@ -1,4 +1,4 @@
-const Button = ({
+export const Button = ({
   children,
   variant = "primary",
   size = "md",
@@ -6,7 +6,7 @@ const Button = ({
   ...rest
 }) => {
   const baseClasses =
-    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+    "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 cursor-pointer";
 
   const variantClasses = {
     primary: "bg-blue-600 text-white hover:bg-blue-700",
@@ -20,6 +20,7 @@ const Button = ({
     md: "h-10 px-4 py-2 text-sm",
     lg: "h-12 px-6 text-base",
   };
+
   return (
     <button
       className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${className}`}
@@ -29,5 +30,3 @@ const Button = ({
     </button>
   );
 };
-
-export default Button;
