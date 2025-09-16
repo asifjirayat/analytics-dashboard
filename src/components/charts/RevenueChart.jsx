@@ -10,13 +10,13 @@ import {
 
 // Mock data
 const mockData = [
-  { name: "Jan", revenue: 4000, expenses: 2400 },
-  { name: "Feb", revenue: 3000, expenses: 1398 },
-  { name: "Mar", revenue: 2000, expenses: 9800 },
-  { name: "Apr", revenue: 2780, expenses: 3908 },
-  { name: "May", revenue: 1890, expenses: 4800 },
-  { name: "Jun", revenue: 2390, expenses: 3800 },
-  { name: "Jul", revenue: 3490, expenses: 4300 },
+  { name: "Jan", Revenue: 4000, Expenses: 2400 },
+  { name: "Feb", Revenue: 3000, Expenses: 1398 },
+  { name: "Mar", Revenue: 2000, Expenses: 9800 },
+  { name: "Apr", Revenue: 2780, Expenses: 3908 },
+  { name: "May", Revenue: 1890, Expenses: 4800 },
+  { name: "Jun", Revenue: 2390, Expenses: 3800 },
+  { name: "Jul", Revenue: 3490, Expenses: 4300 },
 ];
 
 export const RevenueChart = () => {
@@ -33,7 +33,7 @@ export const RevenueChart = () => {
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="revenue"
+            dataKey="Revenue"
             stackId="1"
             stroke="#8884d8"
             fill="#8884d8"
@@ -41,7 +41,7 @@ export const RevenueChart = () => {
           />
           <Area
             type="monotone"
-            dataKey="expenses"
+            dataKey="Expenses"
             stackId="1"
             stroke="#82ca9d"
             fill="#82ca9d"
