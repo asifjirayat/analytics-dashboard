@@ -1,6 +1,8 @@
 import { KpiCard } from "../components/dashboard/KpiCard.jsx";
 import { ChartContainer } from "../components/dashboard/ChartContainer.jsx";
 import { FiClock } from "react-icons/fi";
+import { RevenueChart } from "../components/charts/RevenueChart.jsx";
+import { UserActivityChart } from "../components/charts/UserActivityChart.jsx";
 
 export const DashboardPage = () => {
   // Mock data for KPI cards
@@ -57,14 +59,14 @@ export const DashboardPage = () => {
           title="Revenue Overview"
           onReportClick={() => console.log("View revenue report")}
         >
-          <p className="text-gray-500">Revenue Chart Placeholder</p>
+          <RevenueChart />
         </ChartContainer>
 
         <ChartContainer
           title="User Activity"
           onReportClick={() => console.log("View user report")}
         >
-          <p className="text-gray-500">User Activity Chart Placeholder</p>
+          <UserActivityChart />
         </ChartContainer>
       </div>
 
