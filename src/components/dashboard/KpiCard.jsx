@@ -19,26 +19,28 @@ export const KpiCard = ({
   type,
   changeType = "positive",
 }) => {
-  <div className="bg-white rounded-lg shadow p-6">
-    <div className="flex items-center justify-between">
-      <div>
-        <p className="text-sm font-medium text-gray-500">{title}</p>
-        <p className="text-2xl font-bold text-gray-900">{value}</p>
-        <p
-          className={`text-sm mt-1 ${
-            changeType === "positive" ? "text-green-600" : "text-red-600"
+  return (
+    <div className="bg-white rounded-lg shadow p-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm font-medium text-gray-500">{title}</p>
+          <p className="text-2xl font-bold text-gray-900">{value}</p>
+          <p
+            className={`text-sm mt-1 ${
+              changeType === "positive" ? "text-green-600" : "text-red-600"
+            }`}
+          >
+            {change}
+          </p>
+        </div>
+        <div
+          className={`p-3 rounded-full ${
+            changeType === "positive" ? "bg-green-100" : "bg-red-100"
           }`}
         >
-          {change}
-        </p>
-      </div>
-      <div
-        className={`p-3 rounded-full ${
-          changeType === "positive" ? "bg-green-100" : "bg-red-100"
-        }`}
-      >
-        {iconMap[type] || iconMap.revenue}
+          {iconMap[type] || iconMap.revenue}
+        </div>
       </div>
     </div>
-  </div>;
+  );
 };
