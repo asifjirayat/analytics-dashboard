@@ -1,8 +1,19 @@
+import { useDashboard } from "../../contexts/DashboardContext.jsx";
 import { Button } from "../ui/Button";
-import { FiDownload, FiUser } from "react-icons/fi";
+import { FiDownload, FiUser, FiSun, FiMoon } from "react-icons/fi";
 import { Select } from "../ui/Select";
 
 export const Header = () => {
+  const { state, actions } = useDashboard();
+
+  const handleDateRangeChange = (e) => {
+    actions.setDateRange(e.target.value);
+  };
+
+  const toggleTheme = () => {
+    actions.setTheme(state.theme === "light" ? "dark" : "light");
+  };
+
   return (
     <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4 py-4">
@@ -25,12 +36,25 @@ export const Header = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Select>
+            <Select value={state.dateRange} onChange={handleDateRangeChange}>
               <option>Last 7 days</option>
               <option>Last 30 days</option>
               <option>Last 90 days</option>
               <option>Year to date</option>
             </Select>
+
+            <Button
+              variant="secondary"
+              size="sm"
+              className="p-2 rounded-lg hover:bg-gray-100"
+              onClick={toggleTheme}
+            >
+              {state.theme === "light" ? (
+                <FiMoon className="w-5 h-5 text-gray-600" />
+              ) : (
+                <FiSun className="w-5 h-5 text-gray-600" />
+              )}
+            </Button>
 
             <Button
               variant="secondary"
