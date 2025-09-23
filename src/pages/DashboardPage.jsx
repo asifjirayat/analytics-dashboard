@@ -1,3 +1,4 @@
+import { useDashboard } from "../contexts/DashboardContext.jsx";
 import { KpiCard } from "../components/dashboard/KpiCard.jsx";
 import { ChartContainer } from "../components/dashboard/ChartContainer.jsx";
 import { FiClock } from "react-icons/fi";
@@ -5,37 +6,50 @@ import { RevenueChart } from "../components/charts/RevenueChart.jsx";
 import { UserActivityChart } from "../components/charts/UserActivityChart.jsx";
 
 export const DashboardPage = () => {
+  const { state } = useDashboard();
+
   // Mock data for KPI cards
-  const kpiData = [
-    {
-      title: "Total Revenue",
-      value: "$45,231.89",
-      change: "+20.1% from last month",
-      type: "revenue",
-      changeType: "positive",
-    },
-    {
-      title: "Subscriptions",
-      value: "+2350",
-      change: "+180.1% from last month",
-      type: "users",
-      changeType: "positive",
-    },
-    {
-      title: "Sales",
-      value: "+12,234",
-      change: "+19% from last month",
-      type: "sales",
-      changeType: "positive",
-    },
-    {
-      title: "Active Now",
-      value: "+573",
-      change: "-12% from last month",
-      type: "activity",
-      changeType: "negative",
-    },
-  ];
+  const getKpiData = () => {
+    const baseData = [
+      {
+        title: "Total Revenue",
+        value: "$45,231.89",
+        change: "+20.1% from last month",
+        type: "revenue",
+        changeType: "positive",
+      },
+      {
+        title: "Subscriptions",
+        value: "+2350",
+        change: "+180.1% from last month",
+        type: "users",
+        changeType: "positive",
+      },
+      {
+        title: "Sales",
+        value: "+12,234",
+        change: "+19% from last month",
+        type: "sales",
+        changeType: "positive",
+      },
+      {
+        title: "Active Now",
+        value: "+573",
+        change: "-12% from last month",
+        type: "activity",
+        changeType: "negative",
+      },
+    ];
+
+    /* In a real app, we would filter/modify data based on dateRange
+  For now, we'll just show the same data but indicate the range */
+    return baseData.map((kpi) => ({
+      ...kpi,
+      title: `${kpi.title} (${state.dateRange})`,
+    }));
+  };
+
+  const kpiData = getKpiData();
 
   return (
     <div className="space-y-8">
@@ -55,15 +69,12 @@ export const DashboardPage = () => {
 
       {/* Charts section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <ChartContainer
-          title="Revenue Overview"
-          onReportClick={() => console.log("View revenue report")}
-        >
+        <ChartContainer title={`Revenue Overview (${state.dateRange})`}>
           <RevenueChart />
         </ChartContainer>
 
         <ChartContainer
-          title="User Activity"
+          title={`User Activity (${state.dateRange})`}
           onReportClick={() => console.log("View user report")}
         >
           <UserActivityChart />
